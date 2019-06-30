@@ -1,0 +1,10 @@
+total 40
+drwxr-xr-x    9 alfred  staff   288B  5 14 19:02 .
+drwxr-xr-x    8 alfred  staff   256B  5 10 17:40 ..
+-rw-r--r--    1 alfred  staff     0B  5 14 19:03 home.txt
+-rw-r--r--    1 alfred  staff   297B  5 14 18:29 index.js
+drwxr-xr-x  100 alfred  staff   3.1K  5 10 17:59 node_modules
+-rw-r--r--    1 alfred  staff   3.6K  5 14 18:09 package.json
+-rw-r--r--    1 alfred  staff   666B  5 14 18:58 requestHandlers.js
+-rw-r--r--    1 alfred  staff   334B  5 14 18:34 router.js
+-rw-r--r--    1 alfred  staff   511B  5 14 18:34 server.js
