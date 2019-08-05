@@ -1,0 +1,75 @@
+<html>
+    <head></head>
+    <body>
+        <div>
+                <input type="file" id="excel-file">
+        </div>
+        <script src="./jquery.js"></script>
+        <script type="text/javascript" src="./excel.js"></script>
+        <script>
+               var typeObj = {
+                        integer:'number',
+                        float:'number',
+                        many2one:'number',
+                        many2many:'number',
+                        one2many:'number',
+                        date :'string',
+                        datetime  :'string',
+                        selection:'string',
+                        char  :'string',
+                        boolean  :'string'
+                    }
+
+            $('#excel-file').change(function(e) {
+            var files = e.target.files;
+
+            var fileReader = new FileReader();
+            fileReader.onload = function(ev) {
+                try {
+                    var data = ev.target.result,
+                        workbook = XLSX.read(data, {
+                            type: 'binary'
+                        }), // 以二进制流方式读取得到整份excel表格对象
+                        datas = []; // 存储获取到的数据
+                } catch (e) {
+                    console.log('文件类型不正确');
+                    return;
+                }
+
+                // 表格的表格范围，可用于判断表头是否数量是否正确
+                var fromTo = '';
+                // 遍历每张表读取
+                for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        fromTo = workbook.Sheets[sheet]['!ref'];
+                        console.log(fromTo);
+                        datas = datas.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                        // break; // 如果只取第一张表，就取消注释这行
+                    }
+                }
+
+                console.log(datas);
+                var arr_obj = {};
+                datas.map(data=>{
+                    var obj = {
+                        "type": typeObj[data['字段类型']],
+                        "required": data['必填'],
+                        "description": data['字段标签']
+                    }
+                    arr_obj[data['字段名称']] = obj;
+                })
+
+                arr_obj.id = {
+                    "type": "number",
+                     "id": true
+                }
+
+                console.log('arr_obj',JSON.stringify(arr_obj));
+            };
+
+            // 以二进制方式打开文件
+            fileReader.readAsBinaryString(files[0]);
+        });
+        </script>
+    </body>
+</html>
