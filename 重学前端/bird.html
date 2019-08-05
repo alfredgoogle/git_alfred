@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .bird {
+      width: 400px;
+      height: calc(1440 * 400 / 1920 * 1px);
+    }
+    canvas.bird {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <img id="img" class="bird" src="./img/bird.jpg">
+  <canvas id="canvas" width="1920" height="1440" class="bird"></canvas>
+
+  <script type="text/javascript">
+    let canvas = document.getElementById('canvas')
+    let ctx = canvas.getContext('2d')
+    let img = document.getElementById('img')
+    img.addEventListener('load', () => {
+      ctx.drawImage(img, 0, 0)
+
+      let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      let data = imageData.data
+
+      for (let i = 0; i < data.length; i += 4) {
+        if (isBird(data, i, canvas.width, canvas.height)) {
+          ;[data[i], data[i + 1]] = [data[i + 1] * 1.2, data[i]]
+        }
+      }
+
+      ctx.putImageData(imageData, 0, 0)
+    })
+
+    function isBird (data, i, width, height) {
+      let r = data[i]
+      let g = data[i + 1]
+      let b = data[i + 2]
+
+      let [h, s, l] = rgb2hsl(r, g, b)
+      return h < 200 && h > 80 && s > 0.23 && l < 0.84
+    }
+
+    function rgb2hsl (r, g, b) {
+      let r1 = r / 255
+      let g1 = g / 255
+      let b1 = b / 255
+
+      let min = Math.min(r1, g1, b1)
+      let max = Math.max(r1, g1, b1)
+
+      let l = (min + max) / 2
+      let s
+      let h
+
+      if (l < 0.5) {
+        s = (max - min) / (max + min)
+      } else {
+        s = (max - min) / (2 - max - min)
+      }
+
+      if (max === r1) {
+        h = (r1 - b1) / (max - min)
+      } else if (max === g1) {
+        h = 2 + (b1 - r1) / (max - min)
+      } else if (max === b1) {
+        h = 4 + (r1 - g1) / (max - min)
+      }
+
+      h *= 60
+
+      while (h < 0) {
+        h += 360
+      }
+
+      return [h, s, l]
+    }
+  </script>
+</body>
+</html>
