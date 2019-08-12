@@ -28,8 +28,7 @@ let obj:{x:number,y:number} = {
 obj.x = 3; 
 
 // symbol
-// let s1: any = Symbol()
-// let s2 = Symbol()
+let s2:symbol = Symbol()
 
 //undefined， null
 let un:undefined = undefined;

@@ -1,5 +1,5 @@
 interface List {
-    id:number,
+    readonly id:number,
     name:string,
     // [x : string]:any
     age?:number     // ？ 用于代表可选属性，可以有也可以没有
@@ -15,6 +15,7 @@ function render(result:Result){
         if(value.age){
             console.log(value.age);
         }
+        // value.id ++;        //只读属性不可以修改
     })
 }
 
@@ -51,3 +52,18 @@ render(result);
 //     {id:1,name:'A',sex:'male'},
 //     {id:2,name:'B'},
 // ]});
+
+//定义一个可以用数字索引值为字符型的接口，相当于字符型数组
+interface StringArray{
+    [index:number]:string
+}
+
+let chars = ['a','b','c']
+
+//用任意的字符串去索引Names，得到的都是字符串，这样不能什么number 类型的成员
+interface Names{
+    [index:string]:string,
+    // y:number
+    [index:number]:string,  //即可以数字索引，也可以字符索引，但数字索引必须是字符索引的子类型，因为会引起强制类型转换
+    // [index:number]:number,  //将字符索引的值类型改为any 即可
+}
