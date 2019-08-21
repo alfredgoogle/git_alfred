@@ -6,12 +6,12 @@ let str:string = 'abc';
 let arr1:number[] = [12,3,4];
 let arr2:Array<number | string> =  [1,2,3,'sd'];  //泛型接口
 
-//元祖,限制元素的类型和个数
-//元祖乐意通过push 方法添加新元素，但不能越界访问
-let tupple:[number,string] = [0,'s'];
-// tupple.push(2);
-// console.log(tupple);
-// console.log(tupple[2])
+//元组,限制元素的类型和个数
+//元组可以通过push 方法添加新元素，但不能越界访问
+let tuple:[number,string] = [0,'s'];
+tuple.push(2);
+console.log(tuple);
+// console.log(tuple[2])
 
 //函数
 //函数返回值类型有自动推断功能，当不指定的时候，会自己推定返回类型

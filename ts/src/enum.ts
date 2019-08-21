@@ -2,7 +2,7 @@
 //枚举成员只能是数字或字符
 //数字枚举可以反向映射
 enum Role {
-    Reporter = 1,
+    Reporter = 2,
     Developer,
     Maintainer,
     Owner,
@@ -20,14 +20,15 @@ enum Message {
     Success="add",
     Fail="fail"
 }
+console.log('Message',Message)
 
 //字符串枚举和数字枚举混用，构成异构枚举, 数字成员可反向映射，字符成员不可以
 enum Answer {
     N,
     Y="yes",
-    Z=0       //字符型后的枚举成员必须赋值
+    Z=1       //字符型后的枚举成员必须赋值
 }
-
+console.log('Answer',Answer)
 
 enum Char {
     a,  //const
@@ -37,6 +38,8 @@ enum Char {
     e = '123'.length,
     f = 2       //在计算型后面的变量必须赋值
 }
+console.log('Char',Char)
+
 
 // 常量枚举,在编译时会被删除
 const enum Month {
