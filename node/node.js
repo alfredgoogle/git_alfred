@@ -1,15 +1,8 @@
-var process = require('process');
+let path = require('path');
+console.log('dirname',__dirname);
+console.log('filename',__filename);
+console.log('cwd',process.cwd());
+console.log('path',path.resolve('./'));
 
-setTimeout(()=>{
-    console.log('setTimeout 1')
-},0)
-process.nextTick(()=>{
-    console.log('nextTick 1');
-})
-setImmediate(()=>{
-    console.log('setImmediate 1')
-})
 
-setTimeout(()=>{
-    console.log('setTimeout 2')
-},0)
+exports.A = 1;
