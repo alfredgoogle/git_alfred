@@ -8,6 +8,10 @@ server.listen(4000);
 
 process.title = 'node-master';
 const workers = {};
+
+
+
+
 const creatWorker = ()=>{
     let worker = fork(path.resolve(__dirname,'./worker.js'));
 
@@ -30,6 +34,7 @@ const creatWorker = ()=>{
 for(let i=0;i<cpus.length;i++){
     creatWorker();
 }
+
 
 process.once('SIGINT', close.bind(this, 'SIGINT')); // kill(2) Ctrl-C
 process.once('SIGQUIT', close.bind(this, 'SIGQUIT')); // kill(3) Ctrl-\
