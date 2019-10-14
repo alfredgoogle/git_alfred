@@ -1,0 +1,16 @@
+{
+  "name": "vue1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
