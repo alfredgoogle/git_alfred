@@ -60,10 +60,10 @@ interface StringArray{
 
 let chars = ['a','b','c']
 
-//用任意的字符串去索引Names，得到的都是字符串，这样不能什么number 类型的成员
+//用任意的字符串去索引Names，得到的都是字符串，这样不能索引number 类型的成员
 interface Names{
     [index:string]:string,
     // y:number
     [index:number]:string,  //即可以数字索引，也可以字符索引，但数字索引必须是字符索引的子类型，因为会引起强制类型转换
-    // [index:number]:number,  //将字符索引的值类型改为any 即可
+    // [index:number]:number,  //会报错，将字符索引的值类型改为any 即可
 }
