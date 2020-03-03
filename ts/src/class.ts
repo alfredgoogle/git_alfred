@@ -54,7 +54,7 @@ dog.run()
 dog.eat()
 // dog.pri();
 // dog.pro();
-// dog.food 
+// dog.food
 
 class Hasky extends Dog{
     constructor(name: string, public color: string){
@@ -99,3 +99,15 @@ class MyFlow extends Workflow {
     }
 }
 new MyFlow().next().step1().step2();
+
+
+@testable
+class MyTestableClass {
+  // ...
+}
+
+function testable(target:any) {
+  target.isTestable = true;
+}
+
+console.log('MyTestableClass.isTestable',(MyTestableClass as any).isTestable)

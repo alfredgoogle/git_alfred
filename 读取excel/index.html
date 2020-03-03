@@ -1,8 +1,11 @@
 <html>
     <head></head>
-    <body>
+    <body style="padding: 50px;">
         <div>
                 <input type="file" id="excel-file">
+        </div>
+        <div>
+            <textarea id='textarea' style="height: 400px;width: 100%;margin-top: 30px;"></textarea>
         </div>
         <script src="./jquery.js"></script>
         <script type="text/javascript" src="./excel.js"></script>
@@ -17,7 +20,11 @@
                         datetime  :'string',
                         selection:'string',
                         char  :'string',
-                        boolean  :'string'
+                        text  :'string',
+                        boolean  :'string',
+                        html  :'string',
+                        binary  :'string',
+                        monetary  :'number',
                     }
 
             $('#excel-file').change(function(e) {
@@ -64,7 +71,9 @@
                      "id": true
                 }
 
-                console.log('arr_obj',JSON.stringify(arr_obj));
+                var arr_obj_string = JSON.stringify(arr_obj);
+                console.log('arr_obj  \n ',arr_obj_string.substr(1,arr_obj_string.length - 2));
+                textarea.value=  arr_obj_string.substr(1,arr_obj_string.length - 2);
             };
 
             // 以二进制方式打开文件

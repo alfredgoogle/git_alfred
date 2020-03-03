@@ -1,0 +1,78 @@
+{
+  "name": "@loopback/example-todo",
+  "version": "1.8.3",
+  "description": "Tutorial example on how to build an application with LoopBack 4.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.9"
+  },
+  "author": "IBM Corp.",
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "clean": "lb-clean *example-todo*.tgz dist tsconfig.build.tsbuildinfo package",
+    "lint": "npm run prettier:check && npm run eslint",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run build",
+    "test": "lb-mocha \"dist/__tests__/**/*.js\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "verify": "npm pack && tar xf loopback-todo*.tgz && tree package && npm run clean",
+    "migrate": "node ./dist/migrate",
+    "prestart": "npm run build",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strongloop/loopback-next.git",
+    "directory": "examples/todo"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@loopback/boot": "^1.5.9",
+    "@loopback/context": "^1.23.3",
+    "@loopback/core": "^1.10.5",
+    "@loopback/openapi-v3": "^1.9.10",
+    "@loopback/repository": "^1.15.2",
+    "@loopback/rest": "^1.21.0",
+    "@loopback/rest-explorer": "^1.4.2",
+    "@loopback/service-proxy": "^1.3.9",
+    "loopback-connector-rest": "^3.5.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^2.0.14",
+    "@loopback/eslint-config": "^4.1.2",
+    "@loopback/http-caching-proxy": "^1.1.16",
+    "@loopback/testlab": "^1.9.2",
+    "@types/lodash": "^4.14.141",
+    "@types/node": "^10.14.20",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-eslint-plugin": "^2.1.0",
+    "eslint-plugin-mocha": "^6.1.1",
+    "lodash": "^4.17.15",
+    "typescript": "~3.6.3"
+  },
+  "keywords": [
+    "loopback",
+    "LoopBack",
+    "example",
+    "tutorial",
+    "CRUD",
+    "models",
+    "todo"
+  ],
+  "gitHead": "e0eddb107f0e788a4d37cca74b88f3bcd32d6036",
+  "_resolved": "",
+  "_integrity": "",
+  "_from": "@loopback/example-todo@latest"
+}
