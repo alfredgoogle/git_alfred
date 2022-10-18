@@ -1,0 +1,1 @@
+select * from uc_permission_mdf_relation where permission_code = 'CO-PreOnboardingMenu-Action-ViewDetail';

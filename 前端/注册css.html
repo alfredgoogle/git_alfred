@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <style>
+        form{
+            text-align: center;
+            padding: 100px 10px;
+            line-height: 40px;
+        }
+        form p span.left{
+            width: 100px;
+            text-align:left;
+            display: inline-block;
+        }
+        form p .right{
+            width: 200px;
+            text-align:left;
+            display: inline-block;
+        }
+        form input:not([type=radio]),form select{
+            border-radius: 4px;
+            font-size: 14px;
+            padding: 0 10px;
+            height: 40px;
+            border: 1px solid #dce1e8;
+            box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+            transition: box-shadow ease-in-out 0.15s;
+            box-sizing: border-box;
+        }
+        form input:focus,form select:focus{
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+        }
+        .operate_section{
+            line-height:40px;
+        }
+        .operate_section button{
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            line-height: 25px;
+            color: #fff;
+            background-color: #226dd4;
+            border-color: #226dd4;
+            border-radius: 4px;
+            width: 80px;
+        }
+        .operate_section button:first-child{
+            margin-right: 134px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <p><span class="left">姓名: </span><input  class="right" type="text" name="username" /></p>
+        <p><span class="left">邮箱: </span><input  class="right" type="text" name="email" /></p>
+        <p> <span class="left">性别: </span>  <span class="right">  <input type="radio" name="name">男</td><td><input type="radio" name="name">女 </span> </p>
+        <p> <span class="left">出生日期: </span> <input class="right" type="text" name="birthday" /></p>
+        <p> <span class="left">电话号码: </span><input class="right" type="text" name="phone" /></p>
+        <p> <span class="left">年龄: </span><input class="right" type="text" name="age" /></p>
+        <p> 
+            <span class="left">学历: </span> 
+            <select  class="right"  name="education">
+                <option value="小学">小学</option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="大学">大学</option>
+            </select>
+        </p>
+        <p> <span class="left">密码: </span>  <input class="right" type="password" name="password1" /></p>
+        <p> <span class="left">确认密码: </span>  <input class="right" type="password" name="password2" /></p>
+        <div class="operate_section">
+            <button class="submit">确认</button>
+            <button class="cancel">取消</button>
+        </div>
+      </form>
+</body>
+</html>

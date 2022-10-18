@@ -1,12 +1,21 @@
 <html>
     <head></head>
     <body>
+        <div>
+            <div >code：</div>
+            <input type="text">
+        </div>
         <a id="a" href=""></a>
         <script>
-            var row = 6;
-            let col = 6;
-            let code = '7b587e4f-6e9d-4795-8c03-a60465ad89e6';
-            let url = 'https://iiif.bodleian.ox.ac.uk/iiif/image/7b587e4f-6e9d-4795-8c03-a60465ad89e6/0,1024,1024,1024/2048,/0/default.jpg'
+            // var row = 6;
+            // let col = 6;
+            // let code = '7b587e4f-6e9d-4795-8c03-a60465ad89e6';
+            debugger
+            var searchParams = new URLSearchParams(location.search);
+            let code = searchParams.get('code')
+            let row = Number(searchParams.get('row'))
+            let col = Number(searchParams.get('col'))
+            let url = `https://iiif.bodleian.ox.ac.uk/iiif/image/${code}/0,1024,1024,1024/2048,/0/default.jpg`
             for(let i=1;i<row+1;i++){
                 for(let j=1;j<col+1;j++){
                     getUrl(i,j)
@@ -31,7 +40,7 @@
                     canvas.height = img.height;
                     let context = canvas.getContext("2d");
                     context.drawImage(img, 0, 0, img.width, img.height);
-                    let url = canvas.toDataURL("image/jpg"); //得到图片的base64编码数据
+                    let url = canvas.toDataURL("image/jpeg"); //得到图片的base64编码数据
                     let a = document.createElement("a"); // 生成一个a元素
                     let event = new MouseEvent("click"); // 创建一个单击事件
                     a.download = `${row}${col}.jpg` || "photo"; // 设置图片名称

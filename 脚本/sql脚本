@@ -1,0 +1,79 @@
+var arr = [
+  ["CO-OverViewMenu-Display-ViewTransactionProcessed","CoreHrApprove-periodCounts,CoreHrApprove-periodData,CoreHrApprove-newEmployeeListCount,CoreHrApprove-newEmployeeListHead,CoreHrApprove-newEmployeeList"],
+  ["CO-OverViewMenu-Display-PersonChanges","CoreHrTransfer-employeeChange"]
+]
+
+let roleStr = '';
+let mappingStr = '';
+
+arr.map(item=>{
+  let [view,role] = item;
+  let roleArr = role.split(',');
+  roleArr && roleArr.map(roleitem=>{
+    roleStr += `'${roleitem}',`;
+    mappingStr += `
+    DO
+    $$
+        BEGIN
+            IF NOT EXISTS(select *
+                          from uc_ui_view_base_role_mapping
+                          where uiviewid =
+                                (select id from uc_ui_view where key = '${view}')
+                            and roleid = (select id from uc_custom_role where name = '${roleitem}'))
+            THEN
+                insert into uc_ui_view_base_role_mapping (uiviewid,
+                                                          roleid)
+                values ((select id from uc_ui_view where key = '${view}'),
+                        (select id from uc_custom_role where name = '${roleitem}'));
+            END IF;
+        END
+    $$;
+    `
+  })
+})
+
+
+
+
+('CoreHrBU-exportUnitList','CoreHrCostCenter-exportCostCenterList','CoreHrDivision-exportDivisionList','CoreHrJobProfiles-exportJobContentGroupList','CoreHrLegalEntity-exportLegalEntityList','CoreHrLocation-exportLocationList','CoreHrResignationConfig-exportResignationPlanList','CoreHrResignationConfig-exportResignationInfoList','COEntryConfig-exportFastEntrysList','COEntryConfig-exportTaskGroupList','CoreHrProxyApprove-exportProxyApproveList','CoreHrLabelPlan-exportLabelStrategyList','CoreHrLabelPlan-exportLabelGroupsList','CoreHrLabelPlan-exportLabelTypeList','CoreHrLabelPlan-exportLabelList','CoreHrLabelPlan-exportLabelMatchRuleList','CoreHrImport-exportImportLogList','CoreHrEmployeeAttachment-employeeAttachmentCount','CoreHrEmployeeAttachment-employeeAttachmentGroup','CoreHrEmployeeAttachment-employeeAttachmentSelections')
+
+
+
+
+var arr = [["CoreHrBU-exportUnitList","业务单元导出"],
+["CoreHrCostCenter-exportCostCenterList","成本中心导出"],
+["CoreHrDivision-exportDivisionList","分部导出"],
+["CoreHrJobProfiles-exportJobContentGroupList","任职要素导出"],
+["CoreHrLegalEntity-exportLegalEntityList","法人实体导出"],
+["CoreHrLocation-exportLocationList","地点导出"],
+["CoreHrLabelPlan-exportLabelList","标签导出"],
+["CoreHrEmployeeAttachment-employeeAttachmentCount","文件导入-获取列表数量"],
+["CoreHrLabelPlan-exportLabelMatchRuleList","标签匹配规则导出"],
+["CoreHrEmployeeAttachment-employeeAttachmentSelections","文件导入-获取列表下拉框固定字段"],
+["CoreHrLabelPlan-exportLabelTypeList","标签分类导出"],
+["CoreHrEmployeeAttachment-employeeAttachmentGroup","文件导入-获取列表分组数据"],
+["COEntryConfig-exportFastEntrysList","快速入职配置导出"],
+["CoreHrProxyApprove-exportProxyApproveList","代理审批导出"],
+["CoreHrLabelPlan-exportLabelStrategyList","标签策略导出"],
+["CoreHrImport-exportImportLogList","导入日志导出"],
+["CoreHrResignationConfig-exportResignationInfoList","离职信息设置导出"],
+["CoreHrResignationConfig-exportResignationPlanList","离职计划设置导出"],
+["COEntryConfig-exportTaskGroupList","任务组设置导出"],
+["CoreHrLabelPlan-exportLabelGroupsList","标签分组导出"]]
+
+let roleSql = '';
+arr.map(item=>{
+  let [name,desc] = item;
+  roleSql += `
+  DO
+$$
+    BEGIN
+        IF NOT EXISTS(select * from uc_custom_role where name = '${name}')
+        THEN
+            insert into uc_custom_role (type, name,description,created,modified)
+            values (NULL,'${name}','${desc}',now(),now());
+        END IF;
+    END
+$$;
+  `
+})

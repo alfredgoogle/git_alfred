@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS钟表样式</title>
+<style id="css">
+        #wrap{width:200px; height:200px; border:2px solid #000; margin:100px auto;border-radius:50%; position:relative;}
+        #wrap ul{margin:0; padding:0; height:200px; position:relative; list-style:none;}
+        #wrap ul li{width:2px;  height:6px; background:#000; position:absolute; left:99px; top: 0;-webkit-transform-origin:center 100px;}
+        #wrap ul li:nth-of-type(5n+1){ height:12px;}
+        #wrap ul li:nth-of-type(1){-webkit-transform: rotate(0deg);}
+        #wrap ul li:nth-of-type(2){-webkit-transform: rotate(6deg);}
+        #wrap ul li:nth-of-type(3){-webkit-transform: rotate(12deg);}
+        #wrap ul li:nth-of-type(4){-webkit-transform: rotate(18deg);}
+        #wrap ul li:nth-of-type(5){-webkit-transform: rotate(24deg);}
+        #wrap ul li:nth-of-type(6){-webkit-transform: rotate(30deg);}
+        #wrap ul li:nth-of-type(7){-webkit-transform: rotate(36deg);}
+        #wrap ul li:nth-of-type(8){-webkit-transform: rotate(42deg);}
+        #wrap ul li:nth-of-type(9){-webkit-transform: rotate(48deg);}
+        #wrap ul li:nth-of-type(10){-webkit-transform: rotate(54deg);}
+        #wrap ul li:nth-of-type(11){-webkit-transform: rotate(60deg);}
+        #wrap ul li:nth-of-type(12){-webkit-transform: rotate(66deg);}
+        #wrap ul li:nth-of-type(13){-webkit-transform: rotate(72deg);}
+        #wrap ul li:nth-of-type(14){-webkit-transform: rotate(78deg);}
+        #wrap ul li:nth-of-type(15){-webkit-transform: rotate(84deg);}
+        #wrap ul li:nth-of-type(16){-webkit-transform: rotate(90deg);}
+        #wrap ul li:nth-of-type(17){-webkit-transform: rotate(96deg);}
+        #wrap ul li:nth-of-type(18){-webkit-transform: rotate(102deg);}
+        #wrap ul li:nth-of-type(19){-webkit-transform: rotate(108deg);}
+        #wrap ul li:nth-of-type(20){-webkit-transform: rotate(114deg);}
+        #wrap ul li:nth-of-type(21){-webkit-transform: rotate(120deg);}
+        #wrap ul li:nth-of-type(22){-webkit-transform: rotate(126deg);}
+        #wrap ul li:nth-of-type(23){-webkit-transform: rotate(132deg);}
+        #wrap ul li:nth-of-type(24){-webkit-transform: rotate(138deg);}
+        #wrap ul li:nth-of-type(25){-webkit-transform: rotate(144deg);}
+        #wrap ul li:nth-of-type(26){-webkit-transform: rotate(150deg);}
+        #wrap ul li:nth-of-type(27){-webkit-transform: rotate(156deg);}
+        #wrap ul li:nth-of-type(28){-webkit-transform: rotate(162deg);}
+        #wrap ul li:nth-of-type(29){-webkit-transform: rotate(168deg);}
+        #wrap ul li:nth-of-type(30){-webkit-transform: rotate(174deg);}
+        #wrap ul li:nth-of-type(31){-webkit-transform: rotate(180deg);}
+        #wrap ul li:nth-of-type(32){-webkit-transform: rotate(186deg);}
+        #wrap ul li:nth-of-type(33){-webkit-transform: rotate(192deg);}
+        #wrap ul li:nth-of-type(34){-webkit-transform: rotate(198deg);}
+        #wrap ul li:nth-of-type(35){-webkit-transform: rotate(204deg);}
+        #wrap ul li:nth-of-type(36){-webkit-transform: rotate(210deg);}
+        #wrap ul li:nth-of-type(37){-webkit-transform: rotate(216deg);}
+        #wrap ul li:nth-of-type(38){-webkit-transform: rotate(222deg);}
+        #wrap ul li:nth-of-type(39){-webkit-transform: rotate(228deg);}
+        #wrap ul li:nth-of-type(40){-webkit-transform: rotate(234deg);}
+        #wrap ul li:nth-of-type(41){-webkit-transform: rotate(240deg);}
+        #wrap ul li:nth-of-type(42){-webkit-transform: rotate(246deg);}
+        #wrap ul li:nth-of-type(43){-webkit-transform: rotate(252deg);}
+        #wrap ul li:nth-of-type(44){-webkit-transform: rotate(258deg);}
+        #wrap ul li:nth-of-type(45){-webkit-transform: rotate(264deg);}
+        #wrap ul li:nth-of-type(46){-webkit-transform: rotate(270deg);}
+        #wrap ul li:nth-of-type(47){-webkit-transform: rotate(276deg);}
+        #wrap ul li:nth-of-type(48){-webkit-transform: rotate(282deg);}
+        #wrap ul li:nth-of-type(49){-webkit-transform: rotate(288deg);}
+        #wrap ul li:nth-of-type(50){-webkit-transform: rotate(294deg);}
+        #wrap ul li:nth-of-type(51){-webkit-transform: rotate(300deg);}
+        #wrap ul li:nth-of-type(52){-webkit-transform: rotate(306deg);}
+        #wrap ul li:nth-of-type(53){-webkit-transform: rotate(312deg);}
+        #wrap ul li:nth-of-type(54){-webkit-transform: rotate(318deg);}
+        #wrap ul li:nth-of-type(55){-webkit-transform: rotate(324deg);}
+        #wrap ul li:nth-of-type(56){-webkit-transform: rotate(330deg);}
+        #wrap ul li:nth-of-type(57){-webkit-transform: rotate(336deg);}
+        #wrap ul li:nth-of-type(58){-webkit-transform: rotate(342deg);}
+        #wrap ul li:nth-of-type(59){-webkit-transform: rotate(348deg);}
+        #wrap ul li:nth-of-type(60){-webkit-transform: rotate(354deg);}
+        #hour{width:6px;  height:45px; background:#000; position:absolute; left:97px; top:55px;-webkit-transform-origin:bottom ;}
+        #min{width:4px;  height:65px; background:#999; position:absolute; left:98px; top:35px;-webkit-transform-origin:bottom ;}
+        #sec{width:2px;  height:80px; background:red; position:absolute; left:99px; top:20px;-webkit-transform-origin:bottom ;}
+        .icon{width:20px; height:20px; background:#000; border-radius:50%; position:absolute; left:90px; top: 90px;}
+ 
+    </style>
+</head>
+ 
+<body>
+    <div id="wrap">
+    <ul id="list">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+        <div class="icon"></div>
+    </div>
+</body>
+</html>
