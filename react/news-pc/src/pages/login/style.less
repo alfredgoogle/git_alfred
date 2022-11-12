@@ -32,9 +32,7 @@
 .box {
     padding: 16px 40px;
     width: 350px;
-
     border-radius: 0;
-    // background: #f8f8f9;
     z-index: 100;
 
     .header {
@@ -56,30 +54,27 @@
     }
 
     .formItem {
-        transition-delay: 5s;
-        transition: 500ms;
-        transform: translateX(100%);
         margin-bottom: 24px;
-
-        &:nth-child(2n) {
-            transform: translateX(-100%);
+        :global {
+            label{
+                color: #fff;
+            }
         }
-
-        &.active {
-            transform: translateX(0);
-        }
+    }
+    .formItemLabel{
+        color:#fff;
     }
 
     :global {
-        .@{ant-prefix}-input {
+        .input {
             height: 34px;
         }
 
-        .@{ant-prefix}-btn {
+        .btn {
             height: 44px;
         }
 
-        .@{ant-prefix}-form-item-explain {
+        .form-item-explain {
             position: absolute !important;
             bottom: -24px !important;
         }

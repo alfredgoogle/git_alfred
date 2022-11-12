@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Helmet} from 'react-helmet';
-import {Button, Form} from 'antd';
+import {Button, Form,Input} from 'antd';
 import {LockOutlined, UserOutlined} from '@ant-design/icons';
 import style from './style.less';
 
@@ -9,35 +9,38 @@ class Login extends Component {
     isMount:false,
   }
   render() {
-    const FormItemClass = [style.FormItem, {[style.active]: this.state.isMount}];
+    const FormItemClass = [style.formItem];
     return (
-      <div>
+      <div className={style.root}>
          <Helmet title="欢迎登录" />
          <div className={style.box}>
             <Form name="login">
-              <div className={Form.ItemClass}>
+              <div className={FormItemClass}>
                   <h1 className={style.header}>欢迎登录</h1>
               </div>
-              <div className={Form.ItemClass}>
-                    <Form.Item
-                        name="account"
-                        allowClear
-                        autoFocus
-                        prefix={<UserOutlined />}
-                        placeholder="请输入用户名"
-                        rules={[{required: true, message: '请输入用户名！'}]}
-                    />
+              <div className={FormItemClass}>
+                  <Form.Item
+                    name="username"
+                    label="用户名"
+                    labelCol={{span: 6}}
+                    labelAlign="left"
+                    rules={[{ required: true, message: '请输入用户名' }]}
+                  >
+                    <Input />
+                  </Form.Item>
+              </div>
+              <div className={FormItemClass}>
+                  <Form.Item
+                    name="password"
+                    label="密码"
+                    labelCol={{span: 6}}
+                    labelAlign="left"
+                    rules={[{ required: true, message: '请输入密码' }]}
+                  >
+                    <Input.Password />
+                  </Form.Item>
                 </div>
                 <div className={FormItemClass}>
-                    <Form.Item
-                        type="password"
-                        name="password"
-                        prefix={<LockOutlined />}
-                        placeholder="请输入密码"
-                        rules={[{required: true, message: '请输入密码！'}]}
-                    />
-                </div>
-                <div className={Form.ItemClass}>
                         <Form.Item noStyle shouldUpdate style={{marginBottom: 0}}>
                             {() => (
                                 <Button
