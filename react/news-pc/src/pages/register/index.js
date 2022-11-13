@@ -12,7 +12,8 @@ class Login extends Component {
   onFinish = (values) =>{
     console.log('values',values);
     // LoginApi.login();
-    LoginApi.getVersion();
+    this.props.history.push('/web/user');
+
   }
 
   render() {
