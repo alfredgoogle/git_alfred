@@ -13,7 +13,7 @@ export default class List extends Component{
             todos.map(
                 todo=>{
                     return (
-                        <Item key={todo.id} {...todo}></Item>
+                        <Item key={todo.id} {...todo} Deletetodo={Deletetodo} finishedChange={finishedChange}></Item>
                     )
                 }
             )
