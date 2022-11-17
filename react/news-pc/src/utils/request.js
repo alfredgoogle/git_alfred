@@ -1,5 +1,6 @@
 import axios, { Method as AxiosMethod, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
+import { message} from 'antd';
 import { get as getValue } from 'lodash';
 // import { goLoginPage } from '@/utils/getTargetPage';
 // production
@@ -43,6 +44,8 @@ function errorShow(status, errorText) {
 }
 
 export function request(url, options, showError = true) {
+  // debugger;
+  // console.log('url',url);
   const { cancel, ...config } = options;
   config.headers = options.headers || {};
 
@@ -63,8 +66,21 @@ export function request(url, options, showError = true) {
       .request(config)
       .then(response => {
         return new Promise((interResolve, interReject) => {
+          console.log('response',response)
+
           if (response.status >= 200 && response.status < 300) {
-            interResolve(response);
+            if(response.data && response.data.code){
+              let code = response.data.code;
+              if(code != '200'){
+                console.log('response.data',response.data)
+                interReject(response);
+                message.error(response.data.msg)
+              }else{
+                interResolve(response);
+              }
+            }else{
+              interResolve(response);
+            }
           } else {
             interReject(response);
           }
@@ -104,7 +120,6 @@ export function request(url, options, showError = true) {
           const data = getValue(e, 'response.data');
           if (status === 400 && data && data.error && data.error.error_type === 'table_row') {
 
-            console.log(`181,request error${JSON.stringify(e)}`);
           } else {
             if (showError) {
             }

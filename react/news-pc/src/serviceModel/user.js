@@ -1,14 +1,16 @@
 import { request } from '../utils/request';
 
-export default class LoginApi {
+export default class UserApi {
     /**
-     * 登录接口
+     * 用户列表
      *
      */
-    static async login(data) {
-      return request(`/admin/login`, {
-        method: 'POST',
-        data
+    static async userList(params) {
+      return request(`/user/list`, {
+        method: 'GET',
+        params: {
+         ...params
+      }
       });
     }
 

@@ -20,7 +20,7 @@ export default class App extends  Component{
     let {isStart} = this.state;
     return (
       <div className="App">
-        <div onClick={this.clickBtn.bind(this)}>{isStart ? '结束' : '开始'}</div>
+        <div className="btn" onClick={this.clickBtn.bind(this)}>{isStart ? '结束' : '开始'}</div>
         <Time isStart={isStart}/>
       </div>
     );

@@ -145,5 +145,5 @@
       "react-app"
     ]
   },
-  "proxy": "https://gafcehr-dev.geniusafc.com/peoplusPro/"
+  "proxy": "http://192.168.8.38:8008"
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { HashRouter, Switch, Route } from 'react-router-dom'
 import menus from '../router/menu';
 import style from './style.less';
-import { Button, Menu,Avatar,Dropdown,Space } from 'antd';
+import { Button, Menu,Avatar,Dropdown,Space,message } from 'antd';
 import { DownOutlined, SmileOutlined,LogoutOutlined } from '@ant-design/icons';
 
 class Layout1 extends Component {
@@ -25,18 +25,14 @@ class Layout1 extends Component {
 
 
         //员工信息加载
-        // let userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        let userInfo = {
-            name:'文章同学',
-            userId:123,
+        let userInfo = sessionStorage.getItem('userInfo') && JSON.parse(sessionStorage.getItem('userInfo'));
+        if(userInfo){
+            this.setState({userInfo});
+        }else{
+            debugger;
+            message.error('用户不存在');
+            this.props.history.push('/login');
         }
-
-        this.setState({userInfo});
-
-
-
-        
-
     }
     onClickMenu = (val)=>{
         console.log('val',val)
@@ -46,6 +42,9 @@ class Layout1 extends Component {
 
     //退出登录
     handleLogout = (val)=>{
+        sessionStorage.removeItem('userInfo');
+        message.success('退出成功');
+        this.props.history.push('/login');
         console.log('退出登录')
     }
     render() {
@@ -59,13 +58,13 @@ class Layout1 extends Component {
         let {userInfo} = this.state;
         let dropMenu = (
             <Menu>
-            <Menu.Item key="logout" danger icon={<LogoutOutlined />} onClick={this.handleLogout.bind(this)}>
+            <Menu.Item key="logout" danger icon={<LogoutOutlined />} onClick={this.handleLogout}>
                 退出登录
             </Menu.Item>
         </Menu>
         )
         return (
-            <div className={style.container}>
+            userInfo.username && <div className={style.container}>
                 <div className={style.containerLeft}>
                     <div className={style.containerTitle}>新闻系统</div>
                 {
@@ -82,13 +81,13 @@ class Layout1 extends Component {
                     <div className={style.containerHeader}>
                         <div className={style.containerHeaderLeft}></div>
                         <div className={style.containerHeaderRight}>
-                        <Dropdown overlay={dropMenu}>
+                        <Dropdown menu={dropMenu}>
                             <a onClick={e => e.preventDefault()}>
                             <Space>
                                 <div className={style.containerUserInfo}>
-                                    <Avatar size={40}>{userInfo.name.slice(0,1)}</Avatar>
+                                    <Avatar size={40}>{userInfo.username.slice(0,1)}</Avatar>
                                     <div className={style.containerUserName}>
-                                        {userInfo.name}
+                                        {userInfo.username}
                                     </div>
                                     <DownOutlined/>
                                 </div>
@@ -108,7 +107,7 @@ class Layout1 extends Component {
 
             
                 </div>
-            </div>
+            </div> 
         )
     }
 }
