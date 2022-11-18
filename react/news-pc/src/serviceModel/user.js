@@ -9,29 +9,60 @@ export default class UserApi {
       return request(`/user/list`, {
         method: 'GET',
         params: {
-         ...params
-      }
+          ...params
+        }
       });
     }
 
-
-      /**
-     * 注册接口
+    /**
+     * 查看详情
      *
      */
-    static async register(data) {
-      return request(`/admin/register`, {
-          method: 'POST',
-          data
-        });
-    }
-
-
-    static async getVersion() {
-      return request(`/api/tools/version`, {
+    static async userDetail(id) {
+      return request(`/user/${id}`, {
         method: 'GET',
       });
     }
+
+
+        /**
+     * 删除用户
+     *
+     */
+    static async userDelete(id) {
+      return request(`/user/${id}`, {
+        method: 'DELETE',
+      });
+    }
+
+
+    /**
+     * 修改用户信息
+     *
+     */
+      static async editUserDetail(obj) {
+        return request(`/user`, {
+          method: 'PUT',
+          data: {
+            ...obj
+          }
+        });
+      }
+    
+    /**
+     * 新增用户
+     *
+     */
+     static async addUserDetail(obj) {
+      return request(`/user`, {
+        method: 'POST',
+        data: {
+          ...obj
+        }
+      });
+    }
   
+
+
   }
   

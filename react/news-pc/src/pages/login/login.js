@@ -22,10 +22,12 @@ class Login extends Component {
 
     if(res){
       console.log('res',res);
-      sessionStorage.setItem('userInfo',JSON.stringify())
+      sessionStorage.setItem('userInfo',JSON.stringify(res.data));
       message.success('登录成功');
 
       this.props.history.push('/web/user');
+    }else{
+      message.error('登录失败');
     }
 
 

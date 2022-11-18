@@ -14,6 +14,7 @@ class Layout1 extends Component {
 
 
     componentWillMount() {
+        debugger
         //路由信息加载
         let path  =this.props.location.pathname;
         let index = menus.findIndex(menu=>menu.path == path);
@@ -25,6 +26,7 @@ class Layout1 extends Component {
 
 
         //员工信息加载
+        
         let userInfo = sessionStorage.getItem('userInfo') && JSON.parse(sessionStorage.getItem('userInfo'));
         if(userInfo){
             this.setState({userInfo});
