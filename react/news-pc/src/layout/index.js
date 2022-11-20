@@ -14,7 +14,6 @@ class Layout1 extends Component {
 
 
     componentWillMount() {
-        debugger
         //路由信息加载
         let path  =this.props.location.pathname;
         let index = menus.findIndex(menu=>menu.path == path);
@@ -31,7 +30,6 @@ class Layout1 extends Component {
         if(userInfo){
             this.setState({userInfo});
         }else{
-            debugger;
             message.error('用户不存在');
             this.props.history.push('/login');
         }

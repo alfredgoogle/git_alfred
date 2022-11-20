@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Space, Table, Tag,Spin, Button,Modal,message } from 'antd';
+import { Space, Table, Tag,Spin, Button, Modal,message } from 'antd';
 import UserApi from '../../serviceModel/user.js';
 
+import UserCreateModel from './create';
+import UserEditModel from './edit';
+import UserDetailModel from './detail';
 class User extends Component {
   state = {
     isLoading: false,
@@ -36,7 +39,12 @@ class User extends Component {
       },
     ],
     isDeleteModalOpen:false,
+    isCreateModalOpen:false,
+    isEditModalOpen:false,
+    isViewModalOpen:false,
     viewUser:null,
+    initialEditUser:null,
+    initialViewUser:null,
     page:{
       current:1,
       defaultPageSize:10,
@@ -55,9 +63,11 @@ class User extends Component {
 
   //查看详情
   onViewDetail( record, event){
-    // event.prevent
-    console.log('event',event)
-    console.log('record',record)
+    console.log('record',record);
+    this.setState({
+      isViewModalOpen:true,
+      initialViewUser:{...record}
+    })
 
   }
 
@@ -70,11 +80,17 @@ class User extends Component {
   }
 
   onCreate(){
- 
+
+    this.setState({
+      isCreateModalOpen:true
+    })
   }
 
-  onEdit(){
-
+  onEdit(record){
+    this.setState({
+      isEditModalOpen:true,
+      initialEditUser:{...record}
+    })
   }
   
 
@@ -127,8 +143,53 @@ class User extends Component {
     }
   }
 
+
+  // 确认添加新用户
+  onConfirmCreateUser(){
+    this.setState({
+      isCreateModalOpen:false
+    })
+  }
+
+  // 取消添加新用户
+  onCancelCreateUser(){
+    this.setState({
+      isCreateModalOpen:false
+    })
+  }
+
+
+  // 确认编辑用户
+  onConfirmEditUser(){
+    this.setState({
+      isEditModalOpen:false
+    })
+  }
+
+  // 取消编辑用户
+  onCancelEditUser(){
+    this.setState({
+      isEditModalOpen:false
+    })
+  }
+
+
+  // 确认查看用户
+  onConfirmViewUser(){
+    this.setState({
+      isViewModalOpen:false
+    })
+  }
+
+  // 取消查看用户
+  onCancelViewUser(){
+    this.setState({
+      isViewModalOpen:false
+    })
+  }
+
   render() {
-    let {data,columns,isLoading,page,isDeleteModalOpen} = this.state;
+    let {data,columns,isLoading,page,isDeleteModalOpen,isCreateModalOpen,isEditModalOpen,isViewModalOpen,initialEditUser,initialViewUser} = this.state;
     console.log('data',data)
     return (
       isLoading ? <Spin></Spin> :
@@ -138,6 +199,9 @@ class User extends Component {
         <Modal title="删除用户" cancelText="取消"  okText="确认"  open={isDeleteModalOpen} onOk={this.handleDeleteOk.bind(this)} onCancel={this.handleDeleteCancel.bind(this)}>
         <p>是否确认删除该用户？</p>
         </Modal>
+        <UserCreateModel open={isCreateModalOpen} onOk={this.onConfirmCreateUser.bind(this)} onCancel={this.onCancelCreateUser.bind(this)}></UserCreateModel>
+        <UserEditModel open={isEditModalOpen} user={initialEditUser} onOk={this.onConfirmEditUser.bind(this)} onCancel={this.onCancelEditUser.bind(this)}></UserEditModel>
+        <UserDetailModel open={isViewModalOpen} user={initialViewUser} onOk={this.onConfirmViewUser.bind(this)} onCancel={this.onCancelViewUser.bind(this)}></UserDetailModel>
       </div>
     )
   }

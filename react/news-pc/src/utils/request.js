@@ -44,7 +44,6 @@ function errorShow(status, errorText) {
 }
 
 export function request(url, options, showError = true) {
-  // debugger;
   // console.log('url',url);
   const { cancel, ...config } = options;
   config.headers = options.headers || {};

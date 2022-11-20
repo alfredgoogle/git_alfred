@@ -3,29 +3,29 @@ import { Space, Table, Tag,Spin, Input,Button,Modal,message,Form } from 'antd';
 import UserApi from '../../serviceModel/user.js';
 import style from './style.less';
 
-class UserCreate extends Component {
+class UserEdit extends Component {
   constructor(props) {
     super(props);
     this.submitRef = React.createRef();
-
   }
   state = {
-    isCreateModalOpen:this.props.open
+    isEditModalOpen:this.props.open,
+    initialValues:this.props.user,
   }
 
   onFinish = async (values) =>{
     console.log('values',values);
     let {password,telephone,username} = values;
-    let res = await UserApi.addUserDetail({
+    let res = await UserApi.editUserDetail({
+      ...this.state.initialValues,
       password,
       telephone,
       username,
-      salt:'123456'
     });
 
     if(res && res.data){
       console.log('res',res);
-      message.success('添加用户成功');
+      message.success('修改用户成功');
       this.props.onOk();
     }
   }
@@ -37,32 +37,31 @@ class UserCreate extends Component {
 
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.open !== this.state.isCreateModalOpen){
+    if(nextProps.open !== this.state.isEditModalOpen){
       this.setState({
-        isCreateModalOpen:nextProps.open
+        isEditModalOpen:nextProps.open,
+        initialValues:nextProps.user,
       })
     }
   }
 
 
-  handleCreateOK(){
+  handleEditOK(){
     this.submitRef.current.click();
   }
 
-  handleCreateCancel(){
-    // this.setState({
-    //   isCreateModalOpen:false
-    // })
+  handleEditCancel(){
     this.props.onCancel();
   }
 
   render() {
-    let {isCreateModalOpen} = this.state;
+    let {isEditModalOpen,initialValues} = this.state;
+    console.log('initialValues',initialValues)
     const FormItemClass = [style.formItem];
 
     return (
-      <Modal title="添加新用户" cancelText="取消"  okText="确认"  open={isCreateModalOpen} onOk={this.handleCreateOK.bind(this)} onCancel={this.handleCreateCancel.bind(this)}>
-        <Form name="create"  onFinish={this.onFinish.bind(this)}>
+      <Modal title="修改用户" cancelText="取消"  okText="确认"  open={isEditModalOpen} onOk={this.handleEditOK.bind(this)} onCancel={this.handleEditCancel.bind(this)}>
+        <Form name="edit"  initialValues={initialValues} onFinish={this.onFinish.bind(this)}>
               <div className={FormItemClass}>
                   <Form.Item
                     name="username"
@@ -111,4 +110,4 @@ class UserCreate extends Component {
     )
   }
 }
-export default UserCreate
+export default UserEdit
