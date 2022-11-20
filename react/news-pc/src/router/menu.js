@@ -1,6 +1,6 @@
 import User from '../pages/user'
 import Channel from '../pages/channel'
-import Article from '../pages/article'
+import News from '../pages/news'
 
 let menus = [
     {
@@ -9,14 +9,14 @@ let menus = [
         component:User
     },
     {
-        path:'/web/channer',
+        path:'/web/channel',
         name:'频道管理',
         component:Channel
     },
     {
-        path:'/web/article',
-        name:'文章管理',
-        component:Article
+        path:'/web/news',
+        name:'新闻管理',
+        component:News
     },
   ]
 

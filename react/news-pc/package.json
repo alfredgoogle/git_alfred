@@ -64,6 +64,7 @@
     "webpack-manifest-plugin": "^4.0.2",
     "axios": "0.21.1",
     "js-cookie": "2.2.1",
+    "dayjs": "1.10.5",
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {

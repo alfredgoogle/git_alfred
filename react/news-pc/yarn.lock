@@ -3620,6 +3620,11 @@ date-fns@2.x:
   resolved "http://106.54.170.196:4873/date-fns/-/date-fns-2.29.3.tgz#27402d2fc67eb442b511b70bbdf98e6411cd68a8"
   integrity sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
 
+dayjs@1.10.5:
+  version "1.10.5"
+  resolved "http://106.54.170.196:4873/dayjs/-/dayjs-1.10.5.tgz#5600df4548fc2453b3f163ebb2abbe965ccfb986"
+  integrity sha1-VgDfRUj8JFOz8WPrsqu+llzPuYY=
+
 dayjs@1.x:
   version "1.11.6"
   resolved "http://106.54.170.196:4873/dayjs/-/dayjs-1.11.6.tgz#2e79a226314ec3ec904e3ee1dd5a4f5e5b1c7afb"
