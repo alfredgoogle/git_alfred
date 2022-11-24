@@ -72,9 +72,8 @@ class News extends Component {
       isLoading:true
     })
     let res = await NewsApi.listByTags({
-      "分页页数":pageNum || 1,
-      "分页条数":10,
-      "查询条件":''
+      "pageNum":pageNum || 1,
+      "pageSize":10,
     })
     if(res.data && res.data.records){
       res.data.records = res.data.records.map(record => {

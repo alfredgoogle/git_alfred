@@ -105,18 +105,13 @@ class Channel extends Component {
     this.setState({
       isLoading:true
     })
-    let res = await ChannelApi.channelList({
-      pageNum:1,
-      pageSize:10
-    })
+    let res = await ChannelApi.channelList()
     debugger;
     if(res.data){
       res.data = res.data.map(record => {
         record.key  = record.id;
         return record;
       })
-
-
       // page.defaultPageSize=10;
       this.setState({
         data:res.data,

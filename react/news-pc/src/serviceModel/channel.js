@@ -6,7 +6,7 @@ export default class ChannelApi {
      *
      */
     static async channelList(params) {
-      return request(`/channel/list`, {
+      return request(`/channel/all`, {
         method: 'GET',
         params: {
           ...params

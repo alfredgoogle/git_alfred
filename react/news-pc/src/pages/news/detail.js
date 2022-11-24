@@ -47,7 +47,7 @@ class NewsView extends Component {
     const FormItemClass = [style.formItem];
 
     return (
-      initialValues && <Modal title="查看新闻"  height={500} width={1000} cancelText="取消"  okText="确认"  open={isViewModalOpen} onOk={this.handleViewOK.bind(this)} onCancel={this.handleViewCancel.bind(this)}>
+      initialValues && <Modal title="查看新闻"  width={1000} cancelText="取消"  okText="确认"  open={isViewModalOpen} onOk={this.handleViewOK.bind(this)} onCancel={this.handleViewCancel.bind(this)}>
         {/* <Form name="view"  initialValues={initialValues} onFinish={this.onFinish.bind(this)}>
               <div className={FormItemClass}>
                   <Form.Item

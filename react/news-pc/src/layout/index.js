@@ -25,14 +25,26 @@ class Layout1 extends Component {
 
 
         //员工信息加载
-        
-        let userInfo = sessionStorage.getItem('userInfo') && JSON.parse(sessionStorage.getItem('userInfo'));
-        if(userInfo){
-            this.setState({userInfo});
-        }else{
+        try{
+            let userInfo = sessionStorage.getItem('userInfo') && JSON.parse(sessionStorage.getItem('userInfo'));
+            if(userInfo){
+                this.setState({userInfo});
+            }else{
+                message.error('用户不存在');
+                this.props.history.push('/login');
+            }
+        }catch(err){
             message.error('用户不存在');
             this.props.history.push('/login');
         }
+        
+        // let userInfo = sessionStorage.getItem('userInfo') && JSON.parse(sessionStorage.getItem('userInfo'));
+        // if(userInfo){
+        //     this.setState({userInfo});
+        // }else{
+        //     message.error('用户不存在');
+        //     this.props.history.push('/login');
+        // }
     }
     onClickMenu = (val)=>{
         console.log('val',val)

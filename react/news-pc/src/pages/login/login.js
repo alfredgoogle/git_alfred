@@ -19,15 +19,20 @@ class Login extends Component {
       telephone,
       // username,
     });
+    debugger;
 
-    if(res){
+
+    if(res && res.data){
       console.log('res',res);
       sessionStorage.setItem('userInfo',JSON.stringify(res.data));
       message.success('登录成功');
 
       this.props.history.push('/web/user');
+    }else if(res && res.error){
+      message.error(res.error.message);
     }else{
       message.error('登录失败');
+
     }
 
 
