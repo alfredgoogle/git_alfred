@@ -23,13 +23,6 @@ export default class LoginApi {
           data
         });
     }
-
-
-    static async getVersion() {
-      return request(`/api/tools/version`, {
-        method: 'GET',
-      });
-    }
   
   }
   
