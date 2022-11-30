@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 
-import { nanoid } from 'nanoid';
 
 export default class Time extends Component{
     constructor(props){

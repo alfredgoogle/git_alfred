@@ -14,7 +14,7 @@ let headers = {
     // 'Connection': 'keep-alive',
     // 'Accept':	'*/*',
     // 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E217 MicroMessenger/6.8.0(0x16080000) NetType/WIFI Language/en Branch/Br_trunk MiniProgramEnv/Mac',
-    'Cookie':'gr_user_id=8a9601f8-44eb-47fb-b3e9-6de973077d07; bfe32f60a37bc666_gr_last_sent_cs1=system1; bfe32f60a37bc666_gr_session_id=2c198040-a292-40b9-b99f-28fbeff11a4a; bfe32f60a37bc666_gr_last_sent_sid_with_cs1=2c198040-a292-40b9-b99f-28fbeff11a4a; bfe32f60a37bc666_gr_cs1=system1; bfe32f60a37bc666_gr_session_id_2c198040-a292-40b9-b99f-28fbeff11a4a=true; access_token=s%3AowJ5EsCkB3Cfc8yKFcvX83ZsHFfwi1moSKhoCf7Qj3iltA0KJdhJf0rPK7V3NVdq.KwWD2QmkM7Qn9WMW5NnFzE0dzMBXQ58nG8X2awCa7Bo',
+    'Cookie':'gr_user_id=8a9601f8-44eb-47fb-b3e9-6de973077d07; access_token=s%3Aw3dPyaJSqnP5opNKhVDHDdvuOzjz53L3r7bJHZ3zZFs14RJGUNZ7qGZEVH8uTLAO.mhO7%2FQ6lpTbPk6Lo31%2BGwFt95uSqeYgtEF3v1YGC4m0; bfe32f60a37bc666_gr_last_sent_sid_with_cs1=75de93e8-4451-42cd-b28d-dccc08739aac; bfe32f60a37bc666_gr_last_sent_cs1=system1; bfe32f60a37bc666_gr_cs1=system1; bfe32f60a37bc666_gr_session_id=75de93e8-4451-42cd-b28d-dccc08739aac; bfe32f60a37bc666_gr_session_id_75de93e8-4451-42cd-b28d-dccc08739aac=true',
     // 'Referer': 'https://servicewechat.com/wxfafa99c1d1ea041d/65/page-frame.html',
     // 'Accept-Language': 'zh-cn',
 };
