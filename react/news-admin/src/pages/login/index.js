@@ -41,6 +41,7 @@ class Login extends Component {
 
   render() {
     const FormItemClass = [style.formItem];
+    console.log('login')
     return (
       <div className={style.root}>
          <Helmet title="欢迎登录" />
