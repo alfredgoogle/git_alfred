@@ -32,6 +32,9 @@ export default class App extends Component{
 
 
 
+
+
+
      //增加操作，在组件中以props的形式传递给子组件
      Addtodo = (newtodo) => {
         //旧的todos

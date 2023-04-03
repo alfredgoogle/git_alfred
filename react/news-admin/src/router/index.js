@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from '../pages/login'
-// import Register from '../pages/register'
-
+import Register from '../pages/register'
+import Layout from '../layout'
 
 export default class RouteConfig extends Component {
 
@@ -11,7 +11,8 @@ export default class RouteConfig extends Component {
       <HashRouter>
           <Switch>
             <Route path="/login" exact component={Login}/>
-            {/* <Route path="/register" exact component={Register}/> */}
+            <Route path="/register" exact component={Register}/>
+            <Route path="/web" component={Layout}/>
           </Switch>
       </HashRouter>
     )

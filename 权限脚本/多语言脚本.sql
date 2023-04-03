@@ -36,7 +36,8 @@ create table if not exists a3_lb_base_language_detail
     PRIMARY KEY (id)
 );
 
-INSERT INTO a3_lb_base_language_detail (app, hierarchy_code, custom_type, key, is_delete, create_time, update_time, id, create_uid, update_uid) VALUES ('corehr', '员工', '字段', 'employee_it_does_not_meet_the_uniqueness_verification_of_personal_information', 0, '2022-07-19 05:59:05.843290', '2022-08-18 10:32:56.020186', 43848, null, null);
+INSERT INTO a3_lb_base_language_detail (id, is_delete, create_uid, create_time, update_uid, update_time, app, hierarchy_code, custom_type, key) VALUES (254815, 0, 1, '2022-11-25 11:39:50.716148', 1, '2023-01-05 12:25:55.084963', 'corehr', '公共', '', 'core_global_employees_direct_department');
+INSERT INTO a3_lb_base_language_detail (id, is_delete, create_uid, create_time, update_uid, update_time, app, hierarchy_code, custom_type, key) VALUES (254816, 0, 1, '2022-11-25 11:39:50.716148', 1, '2023-01-05 12:25:55.084963', 'corehr', '公共', '', 'core_global_employees_including_subordinates');
 
 delete
 from a3_lb_base_language_detail
@@ -124,9 +125,12 @@ create table if not exists a3_lb_base_languag_row
     PRIMARY KEY (id)
 );
 
-INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (105903, 0, null, '2022-07-19 05:59:06.353807', null, '2022-08-18 10:32:56.484212', 'zh_Hant', '不滿足個人信息唯一性校驗，請檢查確認。', '', 'employee_it_does_not_meet_the_uniqueness_verification_of_personal_information');
-INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (105920, 0, null, '2022-07-19 05:59:06.353807', null, '2022-08-18 10:32:56.484212', 'en_US', 'It does not meet the uniqueness verification of personal information, please check.', '', 'employee_it_does_not_meet_the_uniqueness_verification_of_personal_information');
-INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (105905, 0, null, '2022-07-19 05:59:06.353807', null, '2022-08-18 10:32:56.484212', 'zh_CN', '不满足个人信息唯一性校验，请检查确认。', '', 'employee_it_does_not_meet_the_uniqueness_verification_of_personal_information');
+INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (233555, 0, 1, '2022-11-25 11:41:11.112398', 1, '2023-01-05 12:25:55.502730', 'zh_Hant', '在職員工(直屬部門)', '', 'core_global_employees_direct_department');
+INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (229040, 0, 1, '2022-11-25 11:41:11.112398', 1, '2023-01-05 12:25:55.502730', 'zh_CN', '在职员工(直属部门)', '', 'core_global_employees_direct_department');
+INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (284044, 0, 1, '2022-11-25 11:41:11.112398', 1, '2023-01-05 12:25:55.502730', 'en_US', 'Employees(including subordinates)', '', 'core_global_employees_including_subordinates');
+INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (262921, 0, 1, '2022-11-25 11:41:11.112398', 1, '2023-01-05 12:25:55.502730', 'zh_Hant', '在職員工(含下級)', '', 'core_global_employees_including_subordinates');
+INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (226758, 0, 1, '2022-11-25 11:41:11.112398', 1, '2023-01-05 12:25:55.502730', 'en_US', 'Employees(direct department)', '', 'core_global_employees_direct_department');
+INSERT INTO a3_lb_base_languag_row (id, is_delete, create_uid, create_time, update_uid, update_time, language, default_translation, customize_translation, field_key) VALUES (248408, 0, 1, '2022-11-25 11:41:11.112398', 1, '2023-01-05 12:25:55.502730', 'zh_CN', '在职员工(含下级)', '', 'core_global_employees_including_subordinates');
 
 delete from a3_lb_base_languag_row where id in (
     select id from a3_lb_base_languag_row a

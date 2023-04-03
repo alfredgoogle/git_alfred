@@ -2,9 +2,9 @@
   DO
   $$
       BEGIN
-          IF NOT EXISTS(select * from uc_custom_role where name ='CoreHrUnusualAction-legalEntityChangeUpdateContract')
+          IF NOT EXISTS(select * from uc_custom_role where name ='position-getPosEmp')
           THEN
-            INSERT INTO uc_custom_role (type, name, description, created, modified) VALUES (null, 'CoreHrUnusualAction-legalEntityChangeUpdateContract', '法人实体变更，是否变更合同信息', now(), now());
+            INSERT INTO uc_custom_role (type, name, description, created, modified, roletypeid, javapath) VALUES ( 'Post', 'position-getPosEmp', '获取岗位主岗员工信息', '2020-12-31 09:12:47.516000', '2020-12-31 09:12:47.516000', '7a3a81f2-5f7f-4255-971c-5bfd168e585e', '/ersoft-core-hr/api/position/getPosEmp');
           END IF;
       END
   $$;

@@ -88,7 +88,6 @@ function cloneDeep3(source, hash = new WeakMap()){
 //拷贝Symbol类型数据
 //方法1
 function cloneDeep4(source, hash = new WeakMap()){
-
     if(!isObject(source)){
         return source;
     }
@@ -115,7 +114,7 @@ function cloneDeep4(source, hash = new WeakMap()){
     for(var key in source){
         if(Object.prototype.hasOwnProperty.call(source,key)){
             if(isObject(source[key])){
-                target[key] = cloneDeep1(source[key], hash);
+                target[key] = cloneDeep4(source[key], hash);
             }else{
                 target[key] = source[key];
             }
