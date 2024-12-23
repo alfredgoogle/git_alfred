@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/alfredgoogle/git_alfred#readme",
   "dependencies": {
+    "axios": "^1.7.7",
+    "puppeteer": "^23.5.3",
     "request": "^2.88.2",
     "request-promise": "4.2.4"
+  },
+  "devDependencies": {
+    "rollup": "^4.29.1"
   }
 }
