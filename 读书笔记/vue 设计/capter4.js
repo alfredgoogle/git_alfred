@@ -5,17 +5,16 @@ const data = {text:'hello world'};
 
 let activeEffect;
 
-const obj = new Proxy(data,{
-    get(target,key){
-        track(target,key)
-        return target[key];
-    },
-    set(target,key,newValue){
-        target[key] = newValue;
-        trigger(target,key);
-        return true;
+
+function effect(fn){
+    let effectFn = ()=>{
+        activeEffect = effectFn;
+        fn();
     }
-})
+    effectFn.deps = [];
+    effectFn();
+}
+
 
 function track(target,key){
     if(activeEffect){
@@ -23,14 +22,14 @@ function track(target,key){
         let depsMap = bucket.get(target);
         if(!depsMap){
             bucket.set(target, depsMap = new Map());
-        }else{
-            let deps = depsMap.get(key);
-            if(!deps){
-                depsMap.set(key, deps = new Set());
-            }else{
-                deps.add(activeEffect);
-            }
         }
+
+        let deps = depsMap.get(key);
+        if(!deps){
+            depsMap.set(key, deps = new Set());
+        }
+        deps.add(activeEffect);
+        
     }
 }
 
@@ -44,17 +43,22 @@ function trigger(target,key){
     }
 }
 
-function effect(fn){
-    let effectFn = (fn){
-        activeEffect = effectFn;
-        fn();
-    }
-    effectFn.deps = [];
-    effectFn();
-}
 
+
+
+const obj = new Proxy(data,{
+    get(target,key){
+        track(target,key)
+        return target[key];
+    },
+    set(target,key,newValue){
+        target[key] = newValue;
+        trigger(target,key);
+        return true;
+    }
+})
 
 effect(()=>{
     console.log('effect run');
-    document.body.innerHtml = data.text;
+    document.body.innerHtml = obj.text;
 })
